@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#EFF3F9"/>
+    </linearGradient>
+    <linearGradient id="risk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F26A2E"/>
+      <stop offset="1" stop-color="#D45A26"/>
+    </linearGradient>
+    <linearGradient id="safe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10B981"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  
+  <!-- Building structure representing business -->
+  <g transform="translate(100, 80)">
+    <!-- Main building -->
+    <rect x="0" y="40" width="200" height="160" fill="#fff" stroke="#E2E8F0" stroke-width="2"/>
+    
+    <!-- Windows representing different business areas -->
+    <g fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1">
+      <rect x="20" y="60" width="30" height="25" rx="2"/>
+      <rect x="70" y="60" width="30" height="25" rx="2"/>
+      <rect x="150" y="60" width="30" height="25" rx="2"/>
+      
+      <rect x="20" y="100" width="30" height="25" rx="2"/>
+      <rect x="70" y="100" width="30" height="25" rx="2"/>
+      <rect x="150" y="100" width="30" height="25" rx="2"/>
+      
+      <rect x="20" y="140" width="30" height="25" rx="2"/>
+      <rect x="70" y="140" width="30" height="25" rx="2"/>
+      <rect x="150" y="140" width="30" height="25" rx="2"/>
+    </g>
+    
+    <!-- Risk indicators (cracks and warning signs) -->
+    <g stroke="url(#risk)" stroke-width="2" stroke-linecap="round">
+      <!-- Cracks in structure -->
+      <path d="M40 140 Q45 135 50 140" opacity="0.8"/>
+      <path d="M120 100 Q125 95 130 100" opacity="0.8"/>
+      <path d="M180 160 Q185 155 190 160" opacity="0.8"/>
+      
+      <!-- Warning symbols -->
+      <g transform="translate(40, 180)">
+        <path d="M0 -8 L8 8 L-8 8 Z" fill="url(#risk)"/>
+      </g>
+      <g transform="translate(120, 120)">
+        <path d="M0 -8 L8 8 L-8 8 Z" fill="url(#risk)"/>
+      </g>
+      <g transform="translate(180, 60)">
+        <path d="M0 -8 L8 8 L-8 8 Z" fill="url(#risk)"/>
+      </g>
+    </g>
+    
+    <!-- Data flow lines (some broken representing incomplete data) -->
+    <g stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 2">
+      <line x1="-30" y1="100" x2="0" y2="100"/>
+      <line x1="-30" y1="140" x2="0" y2="140"/>
+      <line x1="200" y1="80" x2="230" y2="80"/>
+      <line x1="200" y1="120" x2="230" y2="120"/>
+      
+      <!-- Broken data line -->
+      <line x1="200" y1="160" x2="215" y2="160" stroke="url(#risk)" stroke-dasharray="none"/>
+      <circle cx="215" cy="160" r="2" fill="url(#risk)"/>
+    </g>
+    
+    <!-- Governance structure (partial/weak) -->
+    <g stroke="#CBD5E1" stroke-width="1">
+      <line x1="100" y1="40" x2="100" y2="20"/>
+      <line x1="100" y1="20" x2="80" y2="10"/>
+      <line x1="100" y1="20" x2="120" y2="10"/>
+    </g>
+  </g>
+  
+  <!-- Legend/Title -->
+  <g transform="translate(320, 60)" font-family="Inter, Arial" font-size="14" fill="#334155">
+    <text x="0" y="0" font-weight="600" font-size="16">Riscos Empresariais</text>
+    
+    <g transform="translate(0, 40)">
+      <rect x="0" y="0" width="12" height="12" rx="2" fill="url(#risk)"/>
+      <text x="20" y="12">Vulnerabilidades identificadas</text>
+    </g>
+    
+    <g transform="translate(0, 70)">
+      <path d="M6 0 L6 12 M0 6 L12 6" stroke="#94A3B8" stroke-width="1.5"/>
+      <text x="20" y="12">Fluxo de dados interrompido</text>
+    </g>
+    
+    <g transform="translate(0, 100)">
+      <rect x="0" y="0" width="12" height="12" rx="2" fill="#F1F5F9" stroke="#E2E8F0"/>
+      <text x="20" y="12">Áreas de negócio</text>
+    </g>
+  </g>
+</svg>

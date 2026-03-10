@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F1E3A"/>
+      <stop offset="1" stop-color="#0C162C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect x="260" y="220" width="1400" height="640" rx="26" fill="#121826" opacity="0.6"/>
+  <!-- checklist -->
+  <g transform="translate(360,300)">
+    <rect width="540" height="480" rx="16" fill="#0E1A32" stroke="#94A3B8" stroke-opacity="0.35"/>
+    <g fill="#F26A2E">
+      <rect x="40" y="60" width="24" height="24" rx="4"/><rect x="40" y="130" width="24" height="24" rx="4"/><rect x="40" y="200" width="24" height="24" rx="4"/>
+    </g>
+    <g stroke="#D8E0EA" stroke-width="4">
+      <polyline points="44,72 52,84 72,56"/><polyline points="44,142 52,154 72,126"/><polyline points="44,212 52,224 72,196"/>
+    </g>
+    <g fill="#D8E0EA" opacity="0.85">
+      <rect x="90" y="60" width="360" height="16" rx="8"/><rect x="90" y="130" width="380" height="16" rx="8"/><rect x="90" y="200" width="340" height="16" rx="8"/>
+    </g>
+  </g>
+  <!-- magnifier -->
+  <g transform="translate(1100,360)">
+    <circle cx="140" cy="140" r="120" fill="none" stroke="#D21C5A" stroke-width="10"/>
+    <rect x="230" y="230" width="140" height="20" rx="10" fill="#D21C5A" transform="rotate(45 230 230)"/>
+  </g>
+</svg>

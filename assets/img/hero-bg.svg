@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1400" viewBox="0 0 2400 1400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A7B3C5" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#A7B3C5" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="1400" fill="none"/>
+  <g stroke="url(#g)" stroke-width="1">
+    <!-- grid -->
+    <g opacity="0.5">
+      <!-- vertical lines -->
+      <g>
+        <line x1="0" y1="0" x2="0" y2="1400"/>
+        <line x1="200" y1="0" x2="200" y2="1400"/>
+        <line x1="400" y1="0" x2="400" y2="1400"/>
+        <line x1="600" y1="0" x2="600" y2="1400"/>
+        <line x1="800" y1="0" x2="800" y2="1400"/>
+        <line x1="1000" y1="0" x2="1000" y2="1400"/>
+        <line x1="1200" y1="0" x2="1200" y2="1400"/>
+        <line x1="1400" y1="0" x2="1400" y2="1400"/>
+        <line x1="1600" y1="0" x2="1600" y2="1400"/>
+        <line x1="1800" y1="0" x2="1800" y2="1400"/>
+        <line x1="2000" y1="0" x2="2000" y2="1400"/>
+        <line x1="2200" y1="0" x2="2200" y2="1400"/>
+      </g>
+      <!-- horizontal lines -->
+      <g>
+        <line x1="0" y1="0" x2="2400" y2="0"/>
+        <line x1="0" y1="140" x2="2400" y2="140"/>
+        <line x1="0" y1="280" x2="2400" y2="280"/>
+        <line x1="0" y1="420" x2="2400" y2="420"/>
+        <line x1="0" y1="560" x2="2400" y2="560"/>
+        <line x1="0" y1="700" x2="2400" y2="700"/>
+        <line x1="0" y1="840" x2="2400" y2="840"/>
+        <line x1="0" y1="980" x2="2400" y2="980"/>
+        <line x1="0" y1="1120" x2="2400" y2="1120"/>
+        <line x1="0" y1="1260" x2="2400" y2="1260"/>
+        <line x1="0" y1="1400" x2="2400" y2="1400"/>
+      </g>
+    </g>
+    <!-- charts -->
+    <polyline fill="none" stroke="#B9C5D6" stroke-width="2" points="0,900 200,820 400,860 600,720 800,760 1000,640 1200,700 1400,620 1600,680 1800,560 2000,600 2200,520 2400,540" opacity="0.6"/>
+    <polyline fill="none" stroke="#F26A2E" stroke-width="2.5" points="0,980 200,940 400,980 600,900 800,920 1000,820 1200,860 1400,800 1600,820 1800,760 2000,780 2200,740 2400,750" opacity="0.8"/>
+    <polyline fill="none" stroke="#D21C5A" stroke-width="2.5" points="0,1040 200,1000 400,1020 600,980 800,1000 1000,960 1200,980 1400,940 1600,960 1800,920 2000,940 2200,900 2400,920" opacity="0.8"/>
+    <!-- nodes -->
+    <g fill="#F26A2E" opacity="0.8">
+      <circle cx="600" cy="900" r="4"/><circle cx="1000" cy="820" r="4"/><circle cx="1600" cy="820" r="4"/>
+    </g>
+    <g fill="#D21C5A" opacity="0.8">
+      <circle cx="800" cy="1000" r="4"/><circle cx="1400" cy="940" r="4"/><circle cx="2000" cy="940" r="4"/>
+    </g>
+  </g>
+</svg>
