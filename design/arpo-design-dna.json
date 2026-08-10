@@ -1,0 +1,89 @@
+﻿{
+  "brand": {
+    "name": "ARPO",
+    "positioning": "Contabilidade como ferramenta estratégica de decisão",
+    "source_assets": ["logoarpo.png", "Guia de Uso ARPO.pdf"]
+  },
+  "design_system": {
+    "palette": {
+      "navy": ["#0F1B2D", "#15233B", "#1B2D4C", "#233D63"],
+      "orange": ["#DC5D2D", "#E86D34"],
+      "red": ["#D32E4F"],
+      "parchment": ["#FBF7F2", "#F2ECDF", "#F6F1EA"],
+      "stone": ["#E7E0D8", "#D5D1C9"],
+      "ink": ["#111827", "#334155", "#64748B"],
+      "white": ["#FFFFFF"]
+    },
+    "semantic_colors": {
+      "background": "#FBF7F2",
+      "background_alt": "#F2ECDF",
+      "surface": "#FFFFFF",
+      "surface_strong": "#0F1B2D",
+      "text": "#111827",
+      "text_muted": "#334155",
+      "line": "rgba(17,24,39,0.12)",
+      "primary": "#DC5D2D",
+      "primary_dark": "#D32E4F",
+      "secondary": "#0F1B2D",
+      "success": "#1F7A63",
+      "danger": "#CA4255",
+      "highlight": "#E86D34"
+    },
+    "typography": {
+      "font_family_sans": "Segoe UI, Inter, Helvetica Neue, Arial, sans-serif",
+      "font_family_display": "Segoe UI, Inter, Helvetica Neue, Arial, sans-serif",
+      "scale": {
+        "display": "clamp(3.1rem, 7vw, 7rem)",
+        "hero": "clamp(2.4rem, 5vw, 4.6rem)",
+        "h1": "clamp(2.1rem, 4vw, 3rem)",
+        "h2": "clamp(1.6rem, 3vw, 2.3rem)",
+        "h3": "clamp(1.2rem, 2vw, 1.7rem)",
+        "body": "1.05rem",
+        "small": "0.86rem"
+      },
+      "weights": { "regular": 400, "semibold": 600, "bold": 700, "extrabold": 800 },
+      "line_heights": { "tight": 0.95, "body": 1.6 },
+      "tracking": { "tight": "-0.065em", "wide": "0.16em" }
+    },
+    "spacing": { "base": 8, "scale": [8, 12, 16, 24, 32, 48, 64, 80] },
+    "layout": { "container": 1200, "grid_columns": 12, "gutter": 24, "breakpoints": { "mobile": 720, "tablet": 980, "desktop": 1200 } },
+    "radii": { "sm": 10, "md": 14, "lg": 20, "xl": 28 },
+    "borders": { "line": "1px solid rgba(17,24,39,0.12)" },
+    "shadows": { "soft": "0 12px 30px rgba(15,27,45,0.04)", "strong": "0 24px 48px rgba(15,27,45,0.12)" },
+    "buttons": {
+      "primary": { "background": "linear-gradient(135deg, #DC5D2D, #D32E4F)", "text": "#FFFFFF", "radius": "999px" },
+      "secondary": { "background": "transparent", "text": "#0F1B2D", "border": "1px solid rgba(17,24,39,0.14)" }
+    },
+    "cards": { "usage": "limited and structural, not decorative" },
+    "images": { "approach": "editorial, graphic and documentary; no generic corporate stock where avoidable" },
+    "icons": { "style": "minimal, line-weight, utility-first" },
+    "motion": { "easing": "ease", "durations": { "short": 180, "medium": 240 } },
+    "responsiveness": { "mobile_first": true, "stacking": "single-column beneath 720px" }
+  },
+  "design_style": {
+    "atmosphere": "serious, organized, trustworthy, contemporary, executive, Brazilian boutique",
+    "personality": "racional, próximo da liderança, técnico sem fricção, com autoridade editorial",
+    "formality": "high-formality but warm enough to feel human",
+    "rhythm": "editorial and measured, with distinct pauses between modules",
+    "density": "moderate to airy, never crowded",
+    "composition": "asymmetric blocks, layered information, restrained structure with clear visual hierarchy",
+    "space": "generous negative space around statements and data blocks",
+    "text_image_relationship": "text leads; imagery is secondary and architectural, not decorative",
+    "numbers": "used as proof, not dashboard decoration",
+    "editorial_language": "short sentences, precise claims and leadership-oriented framing",
+    "photography": "none by default; when used, documentary and understated",
+    "institutional_presence": "strong, but not grandiose; close to company strategy rather than institutional cliché",
+    "navigation_feel": "controlled, quiet confidence"
+  },
+  "visual_effects": {
+    "enabled": false,
+    "allowed": ["subtle hover elevation", "clean transition timing", "diagonal structure accents"],
+    "forbidden": ["glassmorphism", "neon", "multi-color gradients", "particles", "out-of-place 3D", "decorative parallax", "flashy animations"],
+    "effect_intensity": "low",
+    "performance_tier": "light"
+  },
+  "exclusive_signature": {
+    "concept": "a visual progression from operational complexity to decision clarity",
+    "expression": "layered blocks, structured pathways, and a dark navy / orange contrast system that communicates organized knowledge and executive certainty"
+  }
+}
