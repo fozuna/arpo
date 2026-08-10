@@ -102,7 +102,13 @@ disso, atualizar essas referências antes do lançamento.
 
 ## Política de Privacidade
 
-O documento publicado em `politica-de-privacidade.html` é identificado
-internamente como preliminar (`.article-pending-notice` na própria página)
-e depende de **revisão jurídica formal para conformidade com a LGPD** antes
-de ser tratado como versão final.
+O texto publicado em `politica-de-privacidade.html` foi fornecido como
+texto oficial e o aviso de "conteúdo preliminar" foi removido a pedido.
+Vale registrar: é um modelo genérico (menciona Google AdSense, cookies de
+publicidade comportamental e parceiros afiliados) que não corresponde às
+práticas reais do site — não há AdSense, cookies de publicidade nem
+programa de afiliados implementados aqui. O texto também não cobre os
+elementos que a LGPD tipicamente exige (base legal do tratamento, contato
+do encarregado/DPO, direitos do titular como acesso/retificação/exclusão).
+Não passou por **revisão jurídica formal**; se isso for feito no futuro,
+provavelmente substituirá este texto por um específico para o Grupo ARPO.
