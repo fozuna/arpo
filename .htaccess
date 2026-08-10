@@ -18,6 +18,10 @@ RewriteRule ^styleguide\.html$ /index.html [L,R=301]
 # design/ guarda material interno (direção de design, PDFs de referência,
 # standalone aprovado) — nunca deve ser servido publicamente.
 RewriteRule ^design/ - [F,L]
+
+# private/ guarda dados operacionais do formulário de diagnóstico (limite de
+# frequência, log de falhas de envio) — nunca deve ser servido publicamente.
+RewriteRule ^private/ - [F,L]
 </IfModule>
 
 ErrorDocument 404 /404.html
@@ -29,7 +33,7 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
 Header always set Cross-Origin-Opener-Policy "same-origin"
 Header always set Cross-Origin-Resource-Policy "same-site"
-Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests; block-all-mixed-content"
+Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests; block-all-mixed-content"
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
 </IfModule>
 

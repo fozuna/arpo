@@ -121,11 +121,34 @@ if (progressBar && articleBody) {
   window.addEventListener("resize", updateProgress);
 }
 
-// Formulário de diagnóstico: sem endpoint configurado ainda (ver PENDENCIAS.md).
-// Não simula sucesso, não limpa os dados digitados, valida no cliente.
+// Formulário de diagnóstico: valida no cliente, envia de fato para
+// enviar-diagnostico.php e mostra a resposta real do servidor — nunca uma
+// mensagem de sucesso simulada. Em caso de erro, os dados digitados
+// permanecem no formulário.
 const diagnosticForm = document.getElementById("diagnostic-form");
 if (diagnosticForm) {
   const status = diagnosticForm.querySelector(".form-status");
+  const submitButton = diagnosticForm.querySelector('button[type="submit"]');
+  const csrfField = diagnosticForm.querySelector("#f-csrf-token");
+
+  if (csrfField) {
+    fetch("csrf-token.php", { credentials: "same-origin" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && data.token) csrfField.value = data.token;
+      })
+      .catch(() => {});
+  }
+
+  function showStatus(message, isError) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle("form-status--error", isError);
+    status.classList.add("is-visible");
+    status.setAttribute("tabindex", "-1");
+    status.focus();
+  }
+
   diagnosticForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let firstInvalid = null;
@@ -137,19 +160,34 @@ if (diagnosticForm) {
     });
     if (firstInvalid) {
       firstInvalid.focus();
-      if (status) {
-        status.textContent = "Revise os campos destacados antes de enviar.";
-        status.classList.remove("is-visible");
-        status.classList.add("is-visible", "form-status--error");
-      }
+      showStatus("Revise os campos destacados antes de enviar.", true);
       return;
     }
-    if (status) {
-      status.classList.remove("form-status--error");
-      status.textContent = "O envio automático deste formulário ainda está sendo configurado. Nenhum dado foi perdido — copie as informações acima e envie para contato@grupoarpo.com.br, ou aguarde: entraremos em contato assim que o envio direto estiver disponível.";
-      status.classList.add("is-visible");
-      status.setAttribute("tabindex", "-1");
-      status.focus();
-    }
+
+    if (submitButton) submitButton.disabled = true;
+    showStatus("Enviando...", false);
+
+    fetch(diagnosticForm.action, {
+      method: "POST",
+      body: new FormData(diagnosticForm),
+      credentials: "same-origin",
+    })
+      .then((res) => res.json().catch(() => ({ success: false, message: "Não foi possível interpretar a resposta do servidor." })))
+      .then((data) => {
+        showStatus(
+          data.message || (data.success ? "Solicitação enviada com sucesso." : "Não foi possível enviar. Tente novamente."),
+          !data.success
+        );
+        if (data.success) diagnosticForm.reset();
+      })
+      .catch(() => {
+        showStatus(
+          "Não foi possível enviar agora. Nenhum dado foi perdido — copie as informações acima e envie para contato@grupoarpo.com.br.",
+          true
+        );
+      })
+      .finally(() => {
+        if (submitButton) submitButton.disabled = false;
+      });
   });
 }

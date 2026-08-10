@@ -4,7 +4,8 @@ Este arquivo não é referenciado pelo site público. Ele documenta o que foi
 deliberadamente omitido ou implementado como solução temporária no site,
 conforme a regra de não publicar informação não validada como se fosse real.
 
-Atualizado na Fase 2 (normalização e reconstrução de todas as páginas).
+Atualizado na Fase 3 (correção de conteúdo, privacidade, formulário e
+publicação dos quatro artigos).
 
 ## Conteúdo pendente (não publicado)
 
@@ -22,10 +23,8 @@ Atualizado na Fase 2 (normalização e reconstrução de todas as páginas).
   nesta fase — não há dados reais para exibir.
 - **Nomes/fotos da equipe**: não fazem parte do escopo da Home; relevantes
   para a página "Sobre" (fase futura).
-- **Datas e autores dos artigos**: relevantes para as páginas de Conteúdo/
-  Artigo (fase futura); a Home só lista títulos.
 - **Revisão jurídica/LGPD**: pendente, aplicável à Política de Privacidade
-  e ao futuro formulário de diagnóstico (fase futura).
+  (ver seção própria abaixo) e ao formulário de diagnóstico.
 
 ## Logo negativa (rodapé/CTA navy)
 
@@ -69,24 +68,52 @@ disso, atualizar essas referências antes do lançamento.
 
 ## Conteúdo e Artigo
 
-- Dos quatro temas aprovados, apenas **"Como escolher o regime tributário
-  ideal para seu negócio"** tem página própria
-  (`artigo-regime-tributario.html`). Os outros três aparecem em
-  `conteudo.html` como **"Em preparação"**, sem link — não são páginas
-  quebradas, apenas ainda não escritas.
-- `artigo-regime-tributario.html` publica apenas título, resumo e um aviso
-  interno de conteúdo preliminar. **Não existe corpo de artigo completo,
-  data de publicação nem tempo de leitura** — nenhum desses dados foi
-  inventado. Escrever o corpo real e então remover o aviso `.article-pending-notice`.
+Os quatro temas aprovados agora têm página própria e corpo completo
+(~1000–1600 palavras), sem aviso de conteúdo preliminar:
+
+- `artigo-regime-tributario.html` — Como escolher o regime tributário ideal
+  para seu negócio;
+- `artigo-obrigacoes-acessorias.html` — Os erros mais comuns na entrega de
+  obrigações acessórias;
+- `artigo-auditoria-contabil.html` — Auditoria contábil: quando deixa de ser
+  obrigação e vira ferramenta de gestão;
+- `artigo-indicadores-financeiros.html` — Indicadores financeiros que todo
+  empresário deveria acompanhar.
+
+Todos publicam `datePublished`/`dateModified` reais (10/08/2026, data desta
+publicação) e usam `"author": { "@type": "Organization", "name": "Grupo
+ARPO" }` nos dados estruturados — não foi inventado autor pessoal nem
+assinatura "Equipe Grupo ARPO", já que essa assinatura institucional não
+está confirmada como aprovada. Se for aprovada no futuro, pode-se adicionar
+como texto visível no `article-meta` de cada artigo.
+
+Os exemplos usados em cada artigo são explicitamente rotulados como
+hipotéticos (`<em>Este exemplo é ilustrativo...</em>`) e nenhum dos quatro
+textos cita estatísticas, clientes, resultados ou valores específicos de
+lei sem ressalva — onde a legislação tem valores que mudam com frequência
+(limites de faturamento, alíquotas), o texto indica explicitamente que o
+valor deve ser confirmado como vigente.
 
 ## Formulário de diagnóstico (`contato.html`)
 
-- **Não há endpoint de envio configurado.** O formulário valida no cliente
-  e, ao ser enviado, exibe uma mensagem fixa explicando que o envio
-  automático ainda está sendo configurado e oferecendo o e-mail
-  `contato@grupoarpo.com.br` como alternativa — nenhum dado é apagado, nenhum
-  sucesso falso é exibido. Configurar o endpoint (`action`/backend) e trocar
-  essa mensagem por um envio real é a próxima etapa.
+- **Backend implementado**: `enviar-diagnostico.php` (validação e
+  sanitização no servidor, honeypot, limite de frequência por sessão e por
+  IP em `private/rate-limit.json`, token CSRF via `csrf-token.php` +
+  sessão). O formulário usa `method="post"` e é enviado via `fetch` — os
+  dados nunca aparecem na URL, e o JS (`main.js`) mostra a resposta real do
+  servidor, nunca uma mensagem simulada.
+- **Envio de e-mail depende de `mail()` do PHP, sem SMTP dedicado
+  configurado.** Neste ambiente local (Laragon), `sendmail_path` aponta
+  para o Mailpit (`C:/laragon/bin/mailpit/.../mailpit.exe sendmail`); como o
+  daemon do Mailpit não estava em execução durante os testes, `mail()`
+  retornou `true` mesmo sem nenhuma entrega real — isso é uma peculiaridade
+  deste ambiente de desenvolvimento (o e-mail nunca chegou a sair da
+  máquina local), não um comportamento confiável para produção. **Antes do
+  lançamento, configurar SMTP de produção (ou confirmar que o `mail()` da
+  hospedagem funciona de fato) e reexecutar o teste end-to-end** — o código
+  já verifica o retorno de `mail()` e não finge sucesso, mas essa
+  verificação só é tão confiável quanto a configuração de e-mail do
+  servidor onde rodar.
 - **Telefone/WhatsApp do Grupo ARPO**: continua pendente. O campo do
   formulário é opcional e o rodapé/página de contato não publicam nenhum
   número.
@@ -102,13 +129,23 @@ disso, atualizar essas referências antes do lançamento.
 
 ## Política de Privacidade
 
-O texto publicado em `politica-de-privacidade.html` foi fornecido como
-texto oficial e o aviso de "conteúdo preliminar" foi removido a pedido.
-Vale registrar: é um modelo genérico (menciona Google AdSense, cookies de
-publicidade comportamental e parceiros afiliados) que não corresponde às
-práticas reais do site — não há AdSense, cookies de publicidade nem
-programa de afiliados implementados aqui. O texto também não cobre os
-elementos que a LGPD tipicamente exige (base legal do tratamento, contato
-do encarregado/DPO, direitos do titular como acesso/retificação/exclusão).
-Não passou por **revisão jurídica formal**; se isso for feito no futuro,
-provavelmente substituirá este texto por um específico para o Grupo ARPO.
+`politica-de-privacidade.html` foi substituída por uma minuta orientada à
+LGPD (14 seções: responsável pelo tratamento, dados coletados, finalidades,
+bases legais, compartilhamento, cookies, retenção, segurança, direitos do
+titular, links externos, crianças e adolescentes, alterações, contato). O
+texto genérico anterior (menções a Google AdSense, cookies de publicidade
+comportamental e afiliados) foi removido integralmente.
+
+Pendências específicas desse texto, registradas conforme pedido:
+
+- **Razão social e CNPJ do controlador**: a minuta identifica o responsável
+  pelo tratamento apenas como "Grupo ARPO", sem razão social nem CNPJ —
+  nenhum dos dois foi inventado. Confirmar e adicionar à seção "2. Quem é
+  responsável pelo tratamento" antes da aprovação jurídica definitiva.
+- **Prazo operacional de retenção**: a seção "8. Armazenamento e retenção"
+  descreve a lógica de retenção (enquanto houver finalidade legítima) sem
+  fixar um prazo em meses/anos, porque nenhum prazo foi definido
+  internamente pelo Grupo ARPO. Definir esse prazo e incluí-lo no texto
+  quando decidido.
+- **Revisão jurídica formal**: continua pendente (aviso mantido no topo da
+  página). O texto é uma minuta técnica baseada na operação atual do site.

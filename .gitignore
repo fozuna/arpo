@@ -22,3 +22,8 @@ pnpm-debug.log*
 coverage/
 dist/
 build/
+
+# dados operacionais do formulário de diagnóstico (limite de frequência,
+# log de falhas de envio) — nunca deve ir para o repositório.
+private/*
+!private/.gitkeep
